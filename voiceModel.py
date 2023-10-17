@@ -5,7 +5,7 @@ import silero
 import numpy
 
 
-class voiceModel:
+class VoiceModel:
     repo_or_dir = 'snakers4/silero-models'
     model = 'silero_tts'
 
@@ -19,12 +19,12 @@ class voiceModel:
         self.device = torch.device('cpu')
         self.audio = None
         self.model = None
-        voiceModel.create_model(self)
+        VoiceModel.create_model(self)
 
     def create_model(self):
-        print(voiceModel.repo_or_dir)
-        self.model, _ = torch.hub.load(repo_or_dir=voiceModel.repo_or_dir,
-                                       model=voiceModel.model,
+        print(VoiceModel.repo_or_dir)
+        self.model, _ = torch.hub.load(repo_or_dir=VoiceModel.repo_or_dir,
+                                       model=VoiceModel.model,
                                        language=self.language,
                                        speaker=self.model_id)
         self.model.to(self.device)
@@ -37,7 +37,7 @@ class voiceModel:
                                           put_yo=self.put_yo)
 
     def play_audio(self, text):
-        voiceModel.create_audio(self, text)
+        VoiceModel.create_audio(self, text)
         sd.play(self.audio, self.sample_rate)
         time.sleep(len(self.audio) / self.sample_rate)
         sd.stop()

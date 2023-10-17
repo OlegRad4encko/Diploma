@@ -1,4 +1,4 @@
-from voiceModel import voiceModel as vm
+from voiceModel import VoiceModel as vm
 
 vm_ua = vm('ua', 'v4_ua', 48000, 'mykyta')
 vm_en = vm('en', 'v3_en', 48000, 'en_0')
