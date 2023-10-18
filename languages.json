@@ -1,0 +1,20 @@
+{
+  "Ukraine": {
+    "language": "ua",
+    "model_id": "v4_ua",
+    "sample_rate": 48000,
+    "speaker": "mykyta"
+  },
+  "English": {
+    "language": "en",
+    "model_id": "v3_en",
+    "sample_rate": 48000,
+    "speaker": "en_0"
+  },
+  "German": {
+    "language": "de",
+    "model_id": "v3_de",
+    "sample_rate": 48000,
+    "speaker": "karlsson"
+  }
+}

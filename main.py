@@ -1,26 +1,10 @@
 from voiceModel import VoiceModel as vm
 from translator import TranslatorModel as tr
+import json
 
-languages = {
-    'Ukraine': {
-        'language': 'ua',
-        'model_id': 'v4_ua',
-        'sample_rate': 48000,
-        'speaker': 'mykyta'
-    },
-    'English': {
-        'language': 'en',
-        'model_id': 'v3_en',
-        'sample_rate': 48000,
-        'speaker': 'en_0'
-    },
-    'German': {
-        'language': 'de',
-        'model_id': 'v3_de',
-        'sample_rate': 48000,
-        'speaker': 'karlsson'
-    }
-}
+with open('languages.json', 'r') as vm_config_file:
+    languages = json.load(vm_config_file)
+
 vm_en = vm(languages['English']['language'], languages['English']['model_id'], languages['English']['sample_rate'],
            languages['English']['speaker'])
 translate = tr('UK', 'EN')
