@@ -1,8 +1,8 @@
-from voiceModel import VoiceModel as vm
-from translator import TranslatorModel as tr
+from ttsModule import VoiceModel as vm
+from translatorModule import TranslatorModel as tr
 import json
 
-with open('conf_files/languages.json', 'r') as vm_config_file:
+with open('conf_files/languages_tts.json', 'r') as vm_config_file:
     languages = json.load(vm_config_file)
 
 
