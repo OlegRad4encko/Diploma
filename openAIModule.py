@@ -3,9 +3,9 @@ import asyncio
 
 
 class TextNeuralNetwork:
-    def __init__(self, model: str = "gpt3"):
+    def __init__(self, model: str = "gpt3", is_quick_answer: str = True):
         self.model = model
-        self.isQuickAnswer = True  # need make configurable
+        self.is_quick_answer = is_quick_answer
 
     async def create_prompt(self, prompt):
         try:
