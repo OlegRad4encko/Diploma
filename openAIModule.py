@@ -1,14 +1,18 @@
 from freeGPT import AsyncClient
-from asyncio import run
+import asyncio
 
 
-async def main():
-    prompt = "Привіт, мене звати Олег. Що таке земля (її склад)" + " дай найкоротшу відповідь"
-    try:
-        resp = await AsyncClient.create_completion("gpt3", prompt)
-        print(f"{resp}")
-    except Exception as e:
-        print(f"{e}")
+class TextNeuralNetwork:
+    def __init__(self, model: str = "gpt3"):
+        self.model = model
+        self.isQuickAnswer = True  # need make configurable
+
+    async def create_prompt(self, prompt):
+        try:
+            resp = await AsyncClient.create_completion(self.model, prompt)
+            return resp
+        except Exception as e:
+            return f"Error {e}"
 
 
-run(main())
+
