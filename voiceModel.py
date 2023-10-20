@@ -22,7 +22,6 @@ class VoiceModel:
         VoiceModel.create_model(self)
 
     def create_model(self):
-        print(VoiceModel.repo_or_dir)
         self.model, _ = torch.hub.load(repo_or_dir=VoiceModel.repo_or_dir,
                                        model=VoiceModel.model,
                                        language=self.language,

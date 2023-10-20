@@ -20,5 +20,9 @@ trans.change_langs('DE')
 vm_de.play_audio(trans.translate_text(text))
 
 
+# добавить модуль бард
+# добавить расспознавание голоса
+
+
 
 
