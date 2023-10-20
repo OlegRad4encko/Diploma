@@ -2,7 +2,7 @@ from voiceModel import VoiceModel as vm
 from translator import TranslatorModel as tr
 import json
 
-with open('languages.json', 'r') as vm_config_file:
+with open('conf_files/languages.json', 'r') as vm_config_file:
     languages = json.load(vm_config_file)
 
 
@@ -20,7 +20,6 @@ trans.change_langs('DE')
 vm_de.play_audio(trans.translate_text(text))
 
 
-# добавить модуль бард
 # добавить расспознавание голоса
 
 

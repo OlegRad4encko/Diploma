@@ -1,10 +1,14 @@
 # test of bard module
+import json
 
 from bardapi import Bard
 import os
 import requests
 
-api_key = 'cQgGKWxISF-OW-b2ODqJfuHY_nCMcK0L-32Glm3kjNKvaBAhPkjPDk_rd-dKxYDm8WslfA.'
+with open('conf_files/bard-key.json', 'r') as vm_config_file:
+    languages = json.load(vm_config_file)
+
+api_key = languages['api_key']
 os.environ['_BARD_API_KEY'] = api_key
 token = api_key
 
