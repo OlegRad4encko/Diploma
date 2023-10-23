@@ -40,4 +40,6 @@ if __name__ == "__main__":
 
 vm_en.play_audio(trans.translate_text(result))
 
+
+# добавить UI
 # добавить расспознавание голоса

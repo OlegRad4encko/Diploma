@@ -6,7 +6,7 @@ import numpy
 
 
 class VoiceModel:
-    repo_or_dir = 'snakers4/silero-models'
+    repo_or_dir = 'snakers4/silero-models_stt'
     model = 'silero_tts'
 
     def __init__(self, language, model_id, sample_rate, speaker, put_accent=True, put_yo=True):
