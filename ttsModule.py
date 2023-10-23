@@ -1,3 +1,5 @@
+import json
+
 import torch
 import sounddevice as sd
 import time
@@ -6,7 +8,7 @@ import numpy
 
 
 class VoiceModel:
-    repo_or_dir = 'snakers4/silero-models_stt'
+    repo_or_dir = 'snakers4/silero-models'
     model = 'silero_tts'
 
     def __init__(self, language, model_id, sample_rate, speaker, put_accent=True, put_yo=True):
@@ -40,4 +42,6 @@ class VoiceModel:
         sd.play(self.audio, self.sample_rate)
         time.sleep(len(self.audio) / self.sample_rate)
         sd.stop()
+
+
 
