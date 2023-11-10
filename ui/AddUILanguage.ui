@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>390</width>
+    <height>140</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>390</width>
+    <height>140</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>390</width>
+    <height>140</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Add UI language</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+	marging: 20px;
+	background-color: #3E4E50;
+	padding:  0px 10px;
+}</string>
+  </property>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>30</y>
+     <width>24</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>24</width>
+     <height>24</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>24</width>
+     <height>24</height>
+    </size>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Щоб додати мову, необхідно:&lt;/p&gt;&lt;p&gt;Ввести двухсимвольний код мови за стандартом &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#10893e;&quot;&gt;ISO_639_1&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="whatsThis">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Приклад оформлення сполосполучень команди:&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;знайди^що&lt;span style=&quot; font-family:'JetBrains Mono','monospace'; color:#000000;&quot;&gt; таке^знайди інформацію^як називається&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;де знак &amp;quot;^&amp;quot; розділяє команди&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #D9D9D9;
+border-radius: 12px;
+padding: 0px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../../PycharmProjects/Diploma/Diploma/src/rs-qt/res-qt2.qrc">:/help/help.svg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="addUIButton">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>80</y>
+     <width>125</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>125</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>125</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	height: 40px;
+	font-size: 16px;
+	color: #1D1E18;
+	background-color: #E6E6E9;
+	border-radius: 5px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Додати</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="uiLanguigeField">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>301</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+	background-color: #D9D9D9;
+	color: #1D1E18;
+	font-size: 16px;
+	border-radius: 5px;
+	marging-right: 20px;
+	padding: 8px;
+}</string>
+   </property>
+   <property name="placeholderText">
+    <string>Введіть 2х символьний код мови</string>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../../PycharmProjects/Diploma/Diploma/src/rs-qt/res-qt2.qrc"/>
+ </resources>
+ <connections/>
+</ui>

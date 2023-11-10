@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>cross_icon.svg</file>
+  </qresource>
+</RCC>

@@ -1,4 +1,3 @@
-ASSISTANT_NAME = 'Олег'
 ASSISTANT_ALIAS = ("олег", "олеже", "олеж")
 ASSISTANT_CMD_LIST = {
     "help": ["список команд","команди","що ти вмієш","допомога"],

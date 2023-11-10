@@ -4,6 +4,7 @@ from openAIModule import TextNeuralNetwork as gpt
 from sttModule import SpeachToText as stt
 from sttModule import listen
 from fuzzywuzzy import fuzz
+import sys
 import json
 import asyncio
 import config_assistant as config
@@ -21,12 +22,7 @@ with open('conf_files/freeGPT.json', 'r') as gpt_config_file:
 
 # End of configs #
 
-# Functions #
-# async def gpt_req(text_to_gpt):
-#     return await freeGPT.create_prompt(text_to_gpt)
-# result = ''
-# if __name__ == "__main__":
-#     result = asyncio.run(gpt_req())
+
 
 
 def execute_cmd(cmd: str):
@@ -54,6 +50,7 @@ def stt_respond(voice: str):
         else:
             execute_cmd(cmd['cmd'])
 
+
 def filter_cmd(raw_voice: str):
     cmd = raw_voice
 
@@ -65,11 +62,6 @@ def filter_cmd(raw_voice: str):
 
 
 
-#
-
-
-stt = stt('vosk-model-uk-v3')
-listen(stt_respond, stt.get_model())
 
 
 
@@ -77,6 +69,29 @@ listen(stt_respond, stt.get_model())
 
 
 
+
+
+
+
+
+
+
+
+# stt = stt('vosk-model-uk-v3')
+# listen(stt_respond, stt.get_model())
+
+
+
+async def gpt_req(text_to_gpt):
+    #################
+    freeGPT = gpt()
+    #################
+    return await freeGPT.create_prompt(text_to_gpt)
+
+
+if __name__ == "__main__":
+     result = asyncio.run(gpt_req("Привет, как твои дела?"))
+print(result)
 
 
 
