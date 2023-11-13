@@ -1,0 +1,129 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: sans-serif;
+    background-color: #bdc3c7;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.main {
+    width: 500px;
+    height: 480px;
+    background-color: #3E4E50;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    padding: 16px 20px;
+    box-sizing: border-box;
+}
+
+.content {
+    background-color: #3E4E50;
+    box-sizing: border-box;
+}
+
+.content h1 {
+    font-size: 36px;
+    color: #E6E6E9;
+    background-color: #3E4E50;
+    margin-bottom: 32px;
+    box-sizing: border-box;
+    text-shadow:0px 4px 4px rgba(0,0,0,0.25);
+    -webkit-text-shadow:0px 4px 4px rgba(0,0,0,0.25);
+    -moz-text-shadow:0px 4px 4px rgba(0,0,0,0.25);
+}
+
+.content .horizontal-flex {
+    font-size: 16px;
+    color: #E6E6E9;
+    text-decoration: underline;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+    background-color: #3E4E50;
+}
+
+.content .horizontal-flex label {
+    font-size: 16px;
+    background-color: #3E4E50;
+}
+
+.content .horizontal-flex > button, .content .horizontal-flex > select {
+    font-size: 16px;
+    height: 40px;
+    width: 125px;
+    background-color: #E6E6E9;;
+    color: black;
+    font-weight: 700;
+    box-sizing: border-box;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.content .horizontal-flex select {
+    text-align: center;
+    cursor: pointer;
+}
+
+.horizontal-flex:last-child {
+    margin-bottom: 0px;
+    margin-top: 50px;
+}
+
+.under {
+    font-size: 16px;
+    color: #E6E6E9;
+    text-decoration: underline;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+    background-color: #3E4E50;
+    margin-top: 35px;
+}
+
+.under > a {
+    display: block;
+    text-decoration: none;
+    font-size: 16px;
+    background-color: #3E4E50;
+    color: black;
+    height: auto;
+    width: auto;
+
+}
+
+.link {
+    height: 40px;
+    width: 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #E6E6E9;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.under > .link, .under > button{
+    display: block;
+    font-size: 16px;
+    height: 40px;
+    width: 120px;
+    background-color: #E6E6E9;
+    color: black;
+    font-weight: 700;
+    box-sizing: border-box;
+    border: 0px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+

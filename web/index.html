@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Налаштування</title>
+        <link rel="stylesheet" href="src/styles.css">
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div class="main">
+            <form class="content">
+                <h1>Voice Assistant</h1>
+                <div class="horizontal-flex">
+                    <label>Ім’я голосового помічника</label>
+                    <button>Редагувати</button>
+                </div>
+                <div class="horizontal-flex">
+                    <label>Команди голосового помічника</label>
+                    <button>Редагувати</button>
+                </div>
+                <div class="horizontal-flex">
+                    <label>Розпізнавання голосу:</label>
+                    <select name="sttLang" id="sttLang">
+                        <option value="UA">UA</option>
+                        <option value="EN">EN</option>
+                    </select>
+                </div>
+                <div class="horizontal-flex">
+                    <label>Генерація голосу:</label>
+                    <select name="sttLang" id="ttsLang">
+                        <option value="UA">UA</option>
+                        <option value="EN">EN</option>
+                    </select>
+                </div>
+                <div class="horizontal-flex">
+                    <label>Переклад на:</label>
+                    <select name="sttLang" id="transLang">
+                        <option value="UA">UA</option>
+                        <option value="EN">EN</option>
+                    </select>
+                </div>
+                <div class="under">
+                    <a href="{{ url_for('other_settings') }}"><div class="link">Інше</div></a>
+                    <a href="addLangs.html"><div class="link">Додати мови</div></a>
+                    <button type="submit" value="save">Зберегти</button>
+                </div>
+            </form>
+            
+        </div>
+    </body>
+</html>

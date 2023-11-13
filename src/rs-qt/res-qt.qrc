@@ -1,8 +1,0 @@
-<RCC>
-  <qresource prefix="icon">
-    <file>cross_icon.svg</file>
-  </qresource>
-  <qresource prefix="progico">
-    <file>favicon-32x32.png</file>
-  </qresource>
-</RCC>
