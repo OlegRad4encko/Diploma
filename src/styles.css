@@ -9,7 +9,7 @@
 
 .main {
     width: 500px;
-    height: 480px;
+    height: auto;
     background-color: #3E4E50;
     position: absolute;
     top: 50%;
@@ -23,6 +23,45 @@
 .content {
     background-color: #3E4E50;
     box-sizing: border-box;
+}
+
+.underlogotxtEnable {
+    display: flex;
+    flex-direction: column;
+    background-color: #3E4E50;
+}
+
+.under-logotext {
+    margin-top: -35px;
+    background-color: #3E4E50;
+    padding-right: 190px;
+    text-align: right;
+    font-size: 16px;
+    color: #E6E6E9;
+}
+
+.checkboxes {
+    background-color: #3E4E50;
+    margin-top: 20px;
+}
+
+.checkboxes:nth-child(2) {
+    margin-top: 35px !important;
+}
+
+.checkboxes label {
+    font-size: 16px;
+    color: #E6E6E9;
+    background-color: #3E4E50;
+    cursor: pointer;
+}
+
+.checkboxes input[type = "checkbox"] {
+    font-size: 20px;
+    border-radius: 10px;
+    margin-right: 20px;
+    padding: 20px;
+    cursor: pointer;
 }
 
 .content h1 {
@@ -64,6 +103,11 @@
     border: 0px;
     border-radius: 5px;
     cursor: pointer;
+    text-transform: uppercase;
+}
+
+.content .horizontal-flex > button {
+    text-transform: none;
 }
 
 .content .horizontal-flex select {
@@ -84,7 +128,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 20px;
     background-color: #3E4E50;
     margin-top: 35px;
 }
@@ -127,3 +170,16 @@
     cursor: pointer;
 }
 
+.no-margin {
+    margin-top: 0px !important;
+}
+
+.horizontal-flex a {
+    background-color: #3E4E50;
+    text-decoration: none;
+    color: black;
+}
+
+.margin-top {
+    margin-top: 35px;
+}

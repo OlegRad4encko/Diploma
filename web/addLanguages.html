@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Налаштування</title>
+        <link rel="stylesheet" href="src/styles.css">
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div class="main">
+            <form class="content" method="POST">
+                <div class="underlogotxtEnable">
+                    <h1>Voice Assistant</h1>
+                    <span class="under-logotext">Інші налаштування</span>
+                </div>
+                <div class="horizontal-flex margin-top">
+                    <label>Мова розпізнавання голосу</label>
+                    <a href=""><div class="link">Додати</div></a>
+                </div>
+                <div class="horizontal-flex">
+                    <label>Мова генерації голосу</label>
+                    <a href=""><div class="link">Додати</div></a>
+                </div>
+                <div class="horizontal-flex no-margin">
+                    <label>Мова перекладу</label>
+                    <a href=""><div class="link">Додати</div></a>
+                </div>
+                <div class="under">
+                    <a href="{{ url_for('serve_html') }}"><div class="link">Назад</div></a>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

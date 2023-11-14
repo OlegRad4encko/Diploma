@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Налаштування</title>
+        <link rel="stylesheet" href="src/styles.css">
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div class="main">
+            <form class="content" method="POST">
+                <div class="underlogotxtEnable">
+                    <h1>Voice Assistant</h1>
+                    <span class="under-logotext">Інші налаштування</span>
+                </div>
+                <div class="checkboxes">
+                    <input type="checkbox" name="SpeakTheAnswer" id="SpeakTheAnswer" value="True"
+                    {% if current_settings["SPEAK_THE_ANSWER"] %}checked{% endif %}>
+                    <label for="SpeakTheAnswer">Озвучувати відповідь голосового помічника</label>
+                </div>
+                <div class="checkboxes">
+                    <input type="checkbox" name="IsQuickAnswer" id="IsQuickAnswer" value="True"
+                    {% if current_settings["IS_QUICK_ANSWER"] %}checked{% endif %}>
+                    <label for="IsQuickAnswer">Використовувати короткі відповіді для ChatGPT</label>
+                </div>
+                <div class="under">
+                    <button type="submit" value="save">Зберегти</button>
+                    <a href="{{ url_for('serve_html') }}"><div class="link">Назад</div></a>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

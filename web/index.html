@@ -7,7 +7,7 @@
     </head>
     <body>
         <div class="main">
-            <form class="content">
+            <form class="content" method="POST">
                 <h1>Voice Assistant</h1>
                 <div class="horizontal-flex">
                     <label>Ім’я голосового помічника</label>
@@ -20,31 +20,33 @@
                 <div class="horizontal-flex">
                     <label>Розпізнавання голосу:</label>
                     <select name="sttLang" id="sttLang">
-                        <option value="UA">UA</option>
-                        <option value="EN">EN</option>
+                        {% for key, value in assistant_stt.items() %}
+                        <option value="{{ key }}"{% if current_settings["ASSISTANT_STT"] == key %}selected{% endif %}>{{ value.label }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="horizontal-flex">
                     <label>Генерація голосу:</label>
-                    <select name="sttLang" id="ttsLang">
-                        <option value="UA">UA</option>
-                        <option value="EN">EN</option>
+                    <select name="ttsLang" id="ttsLang">
+                        {% for key, value in assistant_tts.items() %}
+                        <option value="{{ key }}"{% if current_settings["ASSISTANT_TTS"] == key %}selected{% endif %}>{{ value.label }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="horizontal-flex">
                     <label>Переклад на:</label>
-                    <select name="sttLang" id="transLang">
-                        <option value="UA">UA</option>
-                        <option value="EN">EN</option>
+                    <select name="transLang" id="transLang">
+                        {% for key, value in assistant_tra.items() %}
+                        <option value="{{ key }}"{% if current_settings["ASSISTANT_TRA"] == key %}selected{% endif %}>{{ value.label }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="under">
                     <a href="{{ url_for('other_settings') }}"><div class="link">Інше</div></a>
-                    <a href="addLangs.html"><div class="link">Додати мови</div></a>
+                    <a href="{{ url_for('add_languages') }}"><div class="link">Додати мови</div></a>
                     <button type="submit" value="save">Зберегти</button>
                 </div>
-            </form>
-            
+            </form> 
         </div>
     </body>
 </html>
