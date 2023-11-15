@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Редагувати команду</title>
+        <link rel="stylesheet" href="src/styles.css">
+        <meta charset="utf-8">
+
+    </head>
+    <body>
+        <div class="main">
+            <form class="content" method="POST">
+                <div class="underlogotxtEnable">
+                    <h1>Voice Assistant</h1>
+                    <span class="under-logotext">Редагування команди {{ command_edit }}</span>
+                </div>
+
+                <div class="horizontal-flex margin-top">
+                    <label>Назва команди (англійскою)</label>
+                    <div class="in-horizontal-flex">
+                        <input type="text" name="key" placeholder="Назва команди" maxlength="10" minlength="2" value="{{ command_edit }}" readonly>
+                        <i class="fa-solid fa-circle-question tooltip">
+                            <span class="tooltiptext">Введіть назву команди англійською. {% if assistant_cmd_list[command_edit].can_delete == false %}<br><br> Назву базової команди не можна змінювати {% endif %}</span>
+                        </i>
+                    </div>
+                </div>
+
+                <div class="horizontal-flex margin-top with-textarea">
+                    <label>Ключові слова</label>
+                    <div class="in-horizontal-flex">
+                        <textarea cols="33" name="word_list" placeholder="Ключові слова" maxlength="100" minlength="4">{{ word_list_str }}</textarea>
+                        <i class="fa-solid fa-circle-question tooltip">
+                            <span class="tooltiptext">Введіть ключові слова. Ключові слова слугують основним джерелом інформації для боту, що буде розпізнаватися. <br><br>Ключові слова позділяються комами</span>
+                        </i>
+                    </div>
+                </div>
+
+
+                <div class="under">
+                    <button type="submit" name="edit" value="pass">Редагувати</button>
+                    <a href="{{ url_for('commands_list') }}"><div class="link">Назад</div></a>
+                </div>
+
+            </form>
+        </div>
+    <script src="https://kit.fontawesome.com/24baab97da.js" crossorigin="anonymous"></script>
+    </body>
+</html>

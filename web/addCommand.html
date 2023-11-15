@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Додати команду</title>
+        <link rel="stylesheet" href="src/styles.css">
+        <meta charset="utf-8">
+
+    </head>
+    <body>
+        {% if message_type %}
+        <div class="message">
+            {{ message_text }}
+        </div>
+        {% endif %}
+
+        <div class="main">
+            <form class="content" method="POST">
+                <div class="underlogotxtEnable">
+                    <h1>Voice Assistant</h1>
+                    <span class="under-logotext">Додавання команди</span>
+                </div>
+
+                <div class="horizontal-flex margin-top">
+                    <label>Назва команди (англійскою)</label>
+                    <div class="in-horizontal-flex">
+                        <input type="text" name="key" placeholder="Назва команди" maxlength="10" minlength="2">
+                        <i class="fa-solid fa-circle-question tooltip">
+                            <span class="tooltiptext">Введіть назву команди англійською</span>
+                        </i>
+                    </div>
+                </div>
+
+                <div class="horizontal-flex margin-top with-textarea">
+                    <label>Ключові слова</label>
+                    <div class="in-horizontal-flex">
+                        <textarea cols="33" name="word_list" placeholder="Ключові слова" maxlength="100" minlength="4"></textarea>
+                        <i class="fa-solid fa-circle-question tooltip">
+                            <span class="tooltiptext">Введіть ключові слова. Ключові слова слугують основним джерелом інформації для боту, що буде розпізнаватися. <br><br>Ключові слова позділяються комами</span>
+                        </i>
+                    </div>
+                </div>
+
+
+                <div class="under">
+                    <button type="submit" name="edit" value="pass">Додати команду</button>
+                    <a href="{{ url_for('commands_list') }}"><div class="link">Назад</div></a>
+                </div>
+
+            </form>
+        </div>
+    <script src="https://kit.fontawesome.com/24baab97da.js" crossorigin="anonymous"></script>
+    </body>
+</html>

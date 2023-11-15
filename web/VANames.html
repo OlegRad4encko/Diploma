@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Додати мову розпізнавання тексту</title>
+        <link rel="stylesheet" href="src/styles.css">
+        <meta charset="utf-8">
+
+    </head>
+    <body>
+
+        {% if message_type %}
+        <div class="message">
+            {{ message_text }}
+        </div>
+        {% endif %}
+
+        <div class="main">
+            <form class="content" method="POST">
+                <div class="underlogotxtEnable">
+                    <h1>Voice Assistant</h1>
+                    <span class="under-logotext">Імена голосого помічника</span>
+                </div>
+
+                <div class="va-names">
+                {% for value in assistant_alias %}
+                    <div class="va-name">
+                        <span>{{ value }}</span>
+                        <button type="submit" name="delete_name" value="{{ value }}">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                {% endfor %}
+                </div>
+
+                <div class="horizontal-flex margin-top">
+                    <label>Нове ім'я: </label>
+                    <div class="in-horizontal-flex">
+                        <input type="text" name="new_name" placeholder="Введіть нове ім'я" maxlength="10">
+                        <button type="submit" name="add_name" value="add_name">Додати ім'я</button>
+                    </div>
+                </div>
+
+                <div class="under">
+                    <a href="{{ url_for('serve_html') }}"><div class="link">Назад</div></a>
+                </div>
+
+            </form>
+        </div>
+    <script src="https://kit.fontawesome.com/24baab97da.js" crossorigin="anonymous"></script>
+    </body>
+</html>

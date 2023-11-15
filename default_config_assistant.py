@@ -1,4 +1,4 @@
-{
+DEFAULT__SETTINGS = {
     "ASSISTANT_CMD_LIST": {
         "help": {
             "word_list": [
@@ -116,7 +116,7 @@
         "ASSISTANT_TTS": "de",
         "ASSISTANT_STT": "uk",
         "ASSISTANT_TRA": "fr",
-        "SPEAK_THE_ANSWER": true,
-        "IS_QUICK_ANSWER": true
+        "SPEAK_THE_ANSWER": "true",
+        "IS_QUICK_ANSWER": "true"
     }
 }

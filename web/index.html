@@ -11,11 +11,11 @@
                 <h1>Voice Assistant</h1>
                 <div class="horizontal-flex">
                     <label>Ім’я голосового помічника</label>
-                    <button>Редагувати</button>
+                    <a href="{{ url_for('voice_assistant_names') }}"><div class="link">Редагувати</div></a>
                 </div>
                 <div class="horizontal-flex">
                     <label>Команди голосового помічника</label>
-                    <button>Редагувати</button>
+                    <a href="{{ url_for('commands_list') }}"><div class="link">Редагувати</div></a>
                 </div>
                 <div class="horizontal-flex">
                     <label>Розпізнавання голосу:</label>

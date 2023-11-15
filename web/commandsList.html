@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Список команд голосового помічника</title>
+        <link rel="stylesheet" href="src/styles.css">
+        <meta charset="utf-8">
+
+    </head>
+    <body>
+        <div class="main">
+            <form class="content" method="POST">
+                <div class="underlogotxtEnable">
+                    <h1>Voice Assistant</h1>
+                    <span class="under-logotext">Список команд</span>
+                </div>
+
+                <table>
+                    <tr>
+                        <th class="command_name">Назва команди та редагування:</th>
+                        <th class="command_delete">Видалення:</th>
+                    </tr>
+                    {% for command, details in assistant_cmd_list.items() %}
+                      <tr>
+                        <td class="command_name">
+                          <button type="submit" name="command_edit" value="{{ command }}">
+                            <span>{{ command }}</span>
+                            <i class="fa-solid fa-pen-to-square"></i>
+                          </button>
+                        </td>
+                        <td class="command_delete">
+                            {% if details.can_delete != 'False' %}
+                                <button type="submit" name="command_delete" value="{{ command }}">
+                                    <i class="fa-regular fa-trash-can"></i>
+                            {% else %}
+                                <button>
+                                    <i class="fa-solid fa-shield-halved tooltip">
+                                        <span class="tooltiptext">Це базова команда, ви не можете її видалити</span>
+                                    </i>
+                            {% endif %}
+                          </button>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                </table>
+
+                <div class="under">
+                    <a href="{{ url_for('add_command') }}"><div class="link">Додати команду</div></a>
+                    <a href="{{ url_for('serve_html') }}"><div class="link">Назад</div></a>
+                </div>
+
+            </form>
+        </div>
+    <script src="https://kit.fontawesome.com/24baab97da.js" crossorigin="anonymous"></script>
+    </body>
+</html>

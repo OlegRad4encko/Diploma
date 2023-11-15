@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Додати мову розпізнавання тексту</title>
+        <link rel="stylesheet" href="src/styles.css">
+        <meta charset="utf-8">
+
+    </head>
+    <body>
+        <div class="main">
+            <form class="content" method="POST">
+                <div class="underlogotxtEnable">
+                    <h1>Voice Assistant</h1>
+                    <span class="under-logotext">Додати мову розпізнавання тексту</span>
+                </div>
+
+                <div class="horizontal-flex margin-top">
+                    <label>Лейбл мови</label>
+                    <div class="in-horizontal-flex">
+                        <input type="text" name="label" placeholder="Лейбл мови" maxlength="10" minlength="2">
+                        <i class="fa-solid fa-circle-question tooltip">
+                            <span class="tooltiptext">Tooltip text</span>
+                        </i>
+                    </div>
+                </div>
+
+                <div class="horizontal-flex margin-top">
+                    <label>2х символьний код мови:</label>
+                    <div class="in-horizontal-flex">
+                        <input type="text" name="key" placeholder="2х символьний код мови" maxlength="10" minlength="2">
+                        <i class="fa-solid fa-circle-question tooltip">
+                            <span class="tooltiptext">Tooltip text</span>
+                        </i>
+                    </div>
+                </div>
+
+                <div class="horizontal-flex margin-top">
+                    <label>Назва папки моделі:</label>
+                    <div class="in-horizontal-flex">
+                        <input type="text" name="model" placeholder="Назва папки моделі"  maxlength="30" minlength="5">
+                        <i class="fa-solid fa-circle-question tooltip">
+                            <span class="tooltiptext">Tooltip text</span>
+                        </i>
+                    </div>
+                </div>
+
+                <div class="under">
+                    <button type="submit" value="save">Додати</button>
+                    <a href="{{ url_for('serve_html') }}"><div class="link">Назад</div></a>
+                </div>
+                
+            </form>
+        </div>
+    <script src="https://kit.fontawesome.com/24baab97da.js" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -8,80 +8,18 @@ from fuzzywuzzy import fuzz
 import sys
 import json
 import asyncio
-import config_assistant as config
-from flask import Flask, send_file, render_template, url_for, request
-import webbrowser
+from server import *
 
 
 
-# configs of VA assistant
-settings_manager = SettingsManager()
-settings_manager.load_settings()
-assistant_stt = settings_manager.get_setting('ASSISTANT_STT', {})
-assistant_tts = settings_manager.get_setting('ASSISTANT_TTS', {})
-assistant_tra = settings_manager.get_setting('ASSISTANT_TRA', {})
-current_settings = settings_manager.get_setting('CURRENT_SETTINGS', {})
-
-
-# config for local web server =======
-web_config = ''
-with open('web_config.json', 'r') as file:
-    web_config = json.load(file)
-
-# web Server ========================
-app = Flask(__name__, template_folder='web')
-
-@app.route('/', methods=['GET', 'POST'])
-def serve_html():
-    if request.method == 'POST':
-        current_settings['ASSISTANT_TTS'] = request.form.get('ttsLang')
-        current_settings['ASSISTANT_STT'] = request.form.get('sttLang')
-        current_settings['ASSISTANT_TRA'] = request.form.get('transLang')
-
-        settings_manager.set_setting('CURRENT_SETTINGS', current_settings)
-        settings_manager.save_settings()
-
-    return render_template('index.html', assistant_stt=assistant_stt,
-        assistant_tts=assistant_tts,
-        assistant_tra=assistant_tra,
-        current_settings=current_settings)
-
-@app.route('/other_settings', methods=['GET', 'POST'])
-def other_settings():
-    if request.method == 'POST':
-        if request.form.get('SpeakTheAnswer') == None:
-            current_settings['SPEAK_THE_ANSWER'] = False
-        else:
-            current_settings['SPEAK_THE_ANSWER'] = True
-        if request.form.get('IsQuickAnswer') == None:
-            current_settings['IS_QUICK_ANSWER'] = False
-        else:
-            current_settings['IS_QUICK_ANSWER'] = True
-
-        settings_manager.set_setting('CURRENT_SETTINGS', current_settings)
-        settings_manager.save_settings()
-
-    return render_template('otherSettings.html', current_settings=current_settings)
-
-@app.route('/add_languages')
-def add_languages():
-    return render_template('addLanguages.html')
-
-
-
-@app.route('/src/styles.css')
-def serve_css():
-    return send_file('src/styles.css', mimetype='text/css')
-
-def open_browser():
-    webbrowser.open('http://'+str(web_config['host'])+':'+str(web_config['port'])+'/')
 
 if __name__ == '__main__':
-    import threading
     server_thread = threading.Thread(target=app.run, kwargs={'host': web_config['host'], 'port': web_config['port']})
     server_thread.start()
     open_browser()
     server_thread.join()
+
+
 
 
 
