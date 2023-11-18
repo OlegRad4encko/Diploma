@@ -9,7 +9,7 @@
     <body>
 
         {% if message_type %}
-        <div class="message">
+        <div class="message {{message_type}}">
             {{ message_text }}
         </div>
         {% endif %}
@@ -35,7 +35,7 @@
                 <div class="horizontal-flex margin-top">
                     <label>Нове ім'я: </label>
                     <div class="in-horizontal-flex">
-                        <input type="text" name="new_name" placeholder="Введіть нове ім'я" maxlength="10">
+                        <input type="text" name="new_name" placeholder="Введіть нове ім'я" maxlength="10" value="{{ new_name }}">
                         <button type="submit" name="add_name" value="add_name">Додати ім'я</button>
                     </div>
                 </div>

@@ -261,7 +261,7 @@ i {
   left: 50%;
   margin-left: -60px;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity .7s;
 }
 
 
@@ -279,6 +279,12 @@ i {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+.tooltiptext a {
+    background-color: transparent;
+    color: lightblue;
+    text-decoration: underline;
 }
 
 table {
@@ -373,6 +379,14 @@ table tr td, th {
     border: 1px solid red;
     color:white;
     text-align: center;
+}
+
+.error {
+    border: 1px solid red;
+}
+
+.info {
+    border: 1px solid greenyellow;
 }
 
 .va-names {

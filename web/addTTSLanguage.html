@@ -7,19 +7,26 @@
 
     </head>
     <body>
+
+        {% if message_type %}
+        <div class="message {{message_type}}">
+            {{ message_text }}
+        </div>
+        {% endif %}
+
         <div class="main">
             <form class="content" method="POST">
                 <div class="underlogotxtEnable">
                     <h1>Voice Assistant</h1>
-                    <span class="under-logotext">Список команд</span>
+                    <span class="under-logotext">Додати мову генерації голосу</span>
                 </div>
 
                 <div class="horizontal-flex margin-top">
                     <label>Лейбл мови</label>
                     <div class="in-horizontal-flex">
-                        <input type="text" name="label" placeholder="Лейбл мови" maxlength="10" minlength="2">
+                        <input type="text" name="label" placeholder="Лейбл мови" maxlength="10" minlength="2" value="{{ label }}">
                         <i class="fa-solid fa-circle-question tooltip">
-                            <span class="tooltiptext">Tooltip text</span>
+                            <span class="tooltiptext">Назовіть мову на ваш розсуд</span>
                         </i>
                     </div>
                 </div>
@@ -27,9 +34,11 @@
                 <div class="horizontal-flex margin-top">
                     <label>2х символьний код мови:</label>
                     <div class="in-horizontal-flex">
-                        <input type="text" name="key" placeholder="2х символьний код мови" maxlength="2" minlength="2">
+                        <input type="text" name="key" placeholder="2х символьний код мови" maxlength="2" minlength="2" value="{{ key }}">
                         <i class="fa-solid fa-circle-question tooltip">
-                            <span class="tooltiptext">Tooltip text</span>
+                            <span class="tooltiptext">
+                                Двох символьний код мови за стандартом <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">ISO-639-1</a>
+                            </span>
                         </i>
                     </div>
                 </div>
@@ -37,9 +46,9 @@
                 <div class="horizontal-flex margin-top">
                     <label>ID моделі:</label>
                     <div class="in-horizontal-flex">
-                        <input type="text" name="id_model" placeholder="ID моделі" maxlength="10" minlength="3">
+                        <input type="text" name="id_model" placeholder="ID моделі" maxlength="10" minlength="3" value="{{ id_model }}">
                         <i class="fa-solid fa-circle-question tooltip">
-                            <span class="tooltiptext">Tooltip text</span>
+                            <span class="tooltiptext">Введіть ID моделі згідно документації <a href="https://github.com/snakers4/silero-models" target="_blank">Silero</a></span>
                         </i>
                     </div>
                 </div>
@@ -47,16 +56,16 @@
                 <div class="horizontal-flex margin-top">
                     <label>Спікер:</label>
                     <div class="in-horizontal-flex">
-                        <input type="text" name="speaker" placeholder="Спікер" maxlength="10" minlength="4">
+                        <input type="text" name="speaker" placeholder="Спікер" maxlength="10" minlength="4" value="{{ speaker }}">
                         <i class="fa-solid fa-circle-question tooltip">
-                            <span class="tooltiptext">Tooltip text</span>
+                            <span class="tooltiptext">Введіть Спікера згідно документації <a href="https://github.com/snakers4/silero-models" target="_blank">Silero</a></span>
                         </i>
                     </div>
                 </div>
 
                 <div class="under">
                     <button type="submit" value="save">Додати</button>
-                    <a href="{{ url_for('serve_html') }}"><div class="link">Назад</div></a>
+                    <a href="{{ url_for('add_languages') }}"><div class="link">Назад</div></a>
                 </div>
 
             </form>

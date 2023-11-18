@@ -8,7 +8,7 @@
     </head>
     <body>
         {% if message_type %}
-        <div class="message">
+        <div class="message {{message_type}}">
             {{ message_text }}
         </div>
         {% endif %}
@@ -23,7 +23,7 @@
                 <div class="horizontal-flex margin-top">
                     <label>Назва команди (англійскою)</label>
                     <div class="in-horizontal-flex">
-                        <input type="text" name="key" placeholder="Назва команди" maxlength="10" minlength="2">
+                        <input type="text" name="key" placeholder="Назва команди" maxlength="10" minlength="2" value="{% if key %}{{ key }}{% endif %}">
                         <i class="fa-solid fa-circle-question tooltip">
                             <span class="tooltiptext">Введіть назву команди англійською</span>
                         </i>
@@ -33,13 +33,43 @@
                 <div class="horizontal-flex margin-top with-textarea">
                     <label>Ключові слова</label>
                     <div class="in-horizontal-flex">
-                        <textarea cols="33" name="word_list" placeholder="Ключові слова" maxlength="100" minlength="4"></textarea>
+                        <textarea cols="33" name="word_list" placeholder="Ключові слова" maxlength="100" minlength="4">{% if word_list %}{{ word_list }}{% endif %}</textarea>
                         <i class="fa-solid fa-circle-question tooltip">
                             <span class="tooltiptext">Введіть ключові слова. Ключові слова слугують основним джерелом інформації для боту, що буде розпізнаватися. <br><br>Ключові слова позділяються комами</span>
                         </i>
                     </div>
                 </div>
 
+                <div class="horizontal-flex">
+                    <label>Тип команди:</label>
+                    <select name="commandType" id="commandType">
+                        {% if commandType %}
+                        <option value="None"{% if commandType == 'None' %} selected{% endif %}>None</option>
+                        <option value="explorer"{% if commandType == 'explorer' %} selected{% endif %}>Відкрити теку в системі</option>
+                        <option value="execute"{% if commandType == 'execute' %} selected{% endif %}>Запустити програму</option>
+                        <option value="openWebPage"{% if commandType == 'openWebPage' %} selected{% endif %}>Відкрити веб сторінку</option>
+                        {% else %}
+                        <option value="None" selected>None</option>
+                        <option value="explorer">Відкрити теку в системі</option>
+                        <option value="execute">Запустити програму</option>
+                        <option value="openWebPage">Відкрити веб сторінку</option>
+                        {% endif %}
+                    </select>
+                    <i class="fa-solid fa-circle-question tooltip">
+                        <span class="tooltiptext">Оберіть тип кастомної команди:<br><br> Відкрити теку в системі - відкриє теку;<br> Запустити програму - запустить команду;<br> Відкрити веб сторінку - Відкриє веб сторінку</span>
+                    </i>
+
+                </div>
+
+                <div class="horizontal-flex margin-top with-textarea">
+                    <label>Команда на виконання</label>
+                    <div class="in-horizontal-flex">
+                        <textarea cols="33" name="customCommand" placeholder="Шлях до теки / Шлях до програми / Посилання на веб сторінку" maxlength="100" minlength="4">{% if customCommand %}{{ customCommand }}{% endif %}</textarea>
+                        <i class="fa-solid fa-circle-question tooltip">
+                            <span class="tooltiptext">Введіть шлях до теки <br> або шлях до виконавчого файлу програми <br> або посилання по веб сторінку </span>
+                        </i>
+                    </div>
+                </div>
 
                 <div class="under">
                     <button type="submit" name="edit" value="pass">Додати команду</button>

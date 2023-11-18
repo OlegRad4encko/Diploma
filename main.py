@@ -8,20 +8,20 @@ from fuzzywuzzy import fuzz
 import sys
 import json
 import asyncio
+import os
 from server import *
-
+from trayMenu import *
+from multiprocessing import Process
 
 
 
 if __name__ == '__main__':
-    server_thread = threading.Thread(target=app.run, kwargs={'host': web_config['host'], 'port': web_config['port']})
-    server_thread.start()
-    open_browser()
-    server_thread.join()
+    tray_process = Process(target=startTray)
+    tray_process.start()
+    tray_process.join()
 
 
-
-
+#    run_server()
 
 
 

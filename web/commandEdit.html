@@ -7,6 +7,13 @@
 
     </head>
     <body>
+
+        {% if message_type %}
+        <div class="message {{message_type}}">
+            {{ message_text }}
+        </div>
+        {% endif %}
+
         <div class="main">
             <form class="content" method="POST">
                 <div class="underlogotxtEnable">
@@ -34,6 +41,32 @@
                     </div>
                 </div>
 
+                {% if assistant_cmd_list[command_edit].isCustom == "True" %}
+
+                <div class="horizontal-flex">
+                    <label>Тип команди:</label>
+                    <select name="commandType" id="commandType">
+                        <option value="None"{% if commandType == 'None' %} selected {% endif %}>None</option>
+                        <option value="explorer"{% if commandType == 'explorer' %} selected {% endif %}>Відкрити теку в системі</option>
+                        <option value="execute"{% if commandType == 'execute' %} selected {% endif %}>Запустити програму</option>
+                        <option value="openWebPage"{% if commandType == 'openWebPage' %} selected {% endif %}>Відкрити веб сторінку</option>
+                    </select>
+                    <i class="fa-solid fa-circle-question tooltip">
+                        <span class="tooltiptext">Оберіть тип кастомної команди:<br> Відкрити теку в системі - відкриє теку;<br> Запустити програму - запустить команду;<br> Відкрити веб сторінку - Відкриє веб сторінку</span>
+                    </i>
+                </div>
+
+                <div class="horizontal-flex margin-top with-textarea">
+                    <label>Команда на виконання</label>
+                    <div class="in-horizontal-flex">
+                        <textarea cols="33" name="customCommand" placeholder="Шлях до теки / Шлях до програми / Посилання на веб сторінку" maxlength="100" minlength="4">{{ customCommand }}</textarea>
+                        <i class="fa-solid fa-circle-question tooltip">
+                            <span class="tooltiptext">Введіть шлях до теки <br> або шлях до виконавчого файлу програми <br> або посилання по веб сторінку </span>
+                        </i>
+                    </div>
+                </div>
+
+                {% endif %}
 
                 <div class="under">
                     <button type="submit" name="edit" value="pass">Редагувати</button>

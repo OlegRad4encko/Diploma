@@ -6,6 +6,13 @@
         <meta charset="utf-8">
     </head>
     <body>
+
+        {% if message_type %}
+        <div class="message {{message_type}}">
+            {{ message_text }}
+        </div>
+        {% endif %}
+
         <div class="main">
             <form class="content" method="POST">
                 <h1>Voice Assistant</h1>
