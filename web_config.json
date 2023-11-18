@@ -1,4 +1,6 @@
 {
   "host": "127.0.0.1",
-  "port": 5001
+  "port": 5001,
+  "server_inactive_live": 300,
+  "server_last_answer": 100
 }

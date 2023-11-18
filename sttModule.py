@@ -13,20 +13,21 @@ def query_callback(indata, frames, time, status):
     q.put(bytes(indata))
 
 
-def listen(callback, stt_model):
+def listen(callback, stt_model, assistant_alias, assistant_cmd_list):
     model = stt_model['model']
     sample_rate = stt_model['sample_rate']
     block_size = stt_model['block_size']
     device = stt_model['device']
     d_type = stt_model['d_type']
     channels = stt_model['channels']
+
     with sd.RawInputStream(samplerate=sample_rate, blocksize=block_size, device=device, dtype=d_type, channels=channels,
                            callback=query_callback):
         rec = vosk.KaldiRecognizer(model, sample_rate)
         while True:
             data = q.get()
             if rec.AcceptWaveform(data):
-                callback(json.loads(rec.Result())["text"])
+                callback(json.loads(rec.Result())["text"], assistant_alias, assistant_cmd_list)
 
 
 class SpeachToText:

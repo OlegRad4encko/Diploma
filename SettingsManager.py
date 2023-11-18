@@ -38,4 +38,7 @@ class SettingsManager:
 
 
 
+settings_manager = SettingsManager()
+
+
 

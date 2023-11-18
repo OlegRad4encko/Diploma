@@ -1,26 +1,26 @@
 import json
 import asyncio
-from SettingsManager import *
+from SettingsManager import SettingsManager, settings_manager
 from flask import Flask, send_file, render_template, url_for, request
 import webbrowser
-from multiprocessing import Process
+from multiprocessing import Process, Value, Lock
 import re
 import os
 import time
 import sys
-from timeout_decorator import timeout
+import signal
 import logging
+from default_config_assistant import last_request_time
 
 
 # configs of VA assistant ==============================================================================================
-settings_manager = SettingsManager()
 settings_manager.load_settings()
-assistant_stt = settings_manager.get_setting('ASSISTANT_STT', {})
-assistant_tts = settings_manager.get_setting('ASSISTANT_TTS', {})
-assistant_tra = settings_manager.get_setting('ASSISTANT_TRA', {})
 current_settings = settings_manager.get_setting('CURRENT_SETTINGS', {})
 assistant_cmd_list = settings_manager.get_setting('ASSISTANT_CMD_LIST', {})
 assistant_alias = settings_manager.get_setting('ASSISTANT_ALIAS', {})
+assistant_stt = settings_manager.get_setting('ASSISTANT_STT', {})
+assistant_tts = settings_manager.get_setting('ASSISTANT_TTS', {})
+assistant_tra = settings_manager.get_setting('ASSISTANT_TRA', {})
 
 
 
@@ -29,9 +29,8 @@ web_config = ''
 with open('web_config.json', 'r') as file:
     web_config = json.load(file)
 
+
 last_request_time = time.time()
-
-
 
 # web Server
 app = Flask(__name__, template_folder='web')
@@ -42,7 +41,36 @@ log.setLevel(logging.ERROR)
 
 # run server
 def run_server():
+    open_browser()
     app.run(host=web_config['host'], port=web_config['port'], threaded=True, processes=1, use_reloader=False)
+
+def change_last_request_time():
+    current_settings['LAST_REQUEST'] = time.time()
+    settings_manager.set_setting('CURRENT_SETTINGS', current_settings)
+    settings_manager.save_settings()
+
+def get_last_request_time():
+    settings_manager.load_settings()
+    return settings_manager.get_setting('CURRENT_SETTINGS', {})['LAST_REQUEST']
+
+def stop_server(**kwargs):
+    server_inactive_live = web_config['server_inactive_live']
+    server_last_answer = web_config['server_last_answer']
+    server_process = kwargs.get("server_process")
+
+    if server_inactive_live <= server_last_answer:
+        server_inactive_live = 300
+        server_last_answer = 100
+
+    change_last_request_time()
+    while True:
+        elapsed_time = time.time() - get_last_request_time()
+        if elapsed_time > server_inactive_live:
+            os.kill(server_process, signal.SIGTERM)
+            print("Server Stopped")
+            break
+        time.sleep(server_last_answer)
+
 
 
 # check string on latin symbols only
@@ -71,14 +99,9 @@ def if_executable(input_string):
         input_string.lower().endswith(('.exe', '.bat', '.cmd'))
     )
 
-
-
-
 # open browser with home page
-def open_browser():
-    webbrowser.open('http://'+str(web_config['host'])+':'+str(web_config['port'])+'/')
-
-
+def open_browser(destination: str = ''):
+    webbrowser.open('http://'+str(web_config['host'])+':'+str(web_config['port'])+'/'+destination)
 
 
 # endpoints ============================================================================================================
@@ -86,14 +109,13 @@ def open_browser():
 # home page
 @app.route('/', methods=['GET', 'POST'])
 def serve_html():
+    change_last_request_time()
+
     # handler
     if request.method == 'POST':
         current_settings['ASSISTANT_TTS'] = request.form.get('ttsLang')
         current_settings['ASSISTANT_STT'] = request.form.get('sttLang')
         current_settings['ASSISTANT_TRA'] = request.form.get('transLang')
-
-        settings_manager.set_setting('CURRENT_SETTINGS', current_settings)
-        settings_manager.save_settings()
 
         message_type = 'info'
         message_text = "Збережено"
@@ -110,17 +132,18 @@ def serve_html():
 # other settings page
 @app.route('/other_settings', methods=['GET', 'POST'])
 def other_settings():
+    change_last_request_time()
+
     # handler
     if request.method == 'POST':
         if request.form.get('SpeakTheAnswer') == None:
-            current_settings['SPEAK_THE_ANSWER'] = False
+            current_settings['SPEAK_THE_ANSWER'] = "False"
         else:
-            current_settings['SPEAK_THE_ANSWER'] = True
+            current_settings['SPEAK_THE_ANSWER'] = "True"
         if request.form.get('IsQuickAnswer') == None:
-            current_settings['IS_QUICK_ANSWER'] = False
+            current_settings['IS_QUICK_ANSWER'] = "False"
         else:
-            current_settings['IS_QUICK_ANSWER'] = True
-
+            current_settings['IS_QUICK_ANSWER'] = "True"
 
         settings_manager.set_setting('CURRENT_SETTINGS', current_settings)
         settings_manager.save_settings()
@@ -137,6 +160,7 @@ def other_settings():
 # add languages page
 @app.route('/add_languages')
 def add_languages():
+    change_last_request_time()
     return render_template('addLanguages.html')
 
 
@@ -144,6 +168,8 @@ def add_languages():
 # add speech to text language page
 @app.route('/add_stt_language', methods=['GET', 'POST'])
 def add_stt_language():
+    change_last_request_time()
+
     # handler
     if request.method == 'POST':
         if request.form.get('label') == '' or request.form.get('key') == '' or request.form.get('model') == '':
@@ -176,6 +202,7 @@ def add_stt_language():
             "label": label
         }
 
+
         settings_manager.set_setting('ASSISTANT_STT', assistant_stt)
         settings_manager.save_settings()
 
@@ -191,6 +218,8 @@ def add_stt_language():
 # add text to speach language page
 @app.route('/add_tts_language', methods=['GET', 'POST'])
 def add_tss_language():
+    change_last_request_time()
+
     # handler
     if request.method == 'POST':
         if request.form.get('label') == '' or request.form.get('key') == '' or request.form.get('id_model') == '' or request.form.get('speaker') == '':
@@ -239,6 +268,8 @@ def add_tss_language():
 # add translate language page
 @app.route('/add_translate_language', methods=['GET', 'POST'])
 def add_translate_language():
+    change_last_request_time()
+
     # handler
     if request.method == 'POST':
         if request.form.get('label') == '' or request.form.get('key') == '':
@@ -262,6 +293,7 @@ def add_translate_language():
             "label": label,
             "lang": key
         }
+
         settings_manager.set_setting('ASSISTANT_TRA', assistant_tra)
         settings_manager.save_settings()
 
@@ -277,6 +309,8 @@ def add_translate_language():
 # commands list page
 @app.route('/commands_list', methods=['GET', 'POST'])
 def commands_list():
+    change_last_request_time()
+
     # handler
     if request.method == 'POST':
 
@@ -411,6 +445,8 @@ def commands_list():
 # edit command page
 @app.route('/command_edit', methods=['GET', 'POST'])
 def command_edit():
+    change_last_request_time()
+
     return render_template('commandsList.html', assistant_cmd_list=assistant_cmd_list)
 
 
@@ -418,6 +454,9 @@ def command_edit():
 # add command page
 @app.route('/add_command', methods=['GET', 'POST'])
 def add_command():
+    global last_request_time
+    last_request_time = time.time()
+
     # handler
     if request.method == 'POST':
         if request.form.get('key') == '' or request.form.get('word_list') == '' or request.form.get('customCommand') == '':
@@ -493,6 +532,8 @@ def add_command():
 # VA names page
 @app.route('/voice_assistant_names', methods=['GET', 'POST'])
 def voice_assistant_names():
+    change_last_request_time()
+
     # handler
     if request.method == 'POST':
 
@@ -541,4 +582,6 @@ def voice_assistant_names():
 # load styles to page
 @app.route('/src/styles.css')
 def serve_css():
+    change_last_request_time()
+
     return send_file('src/styles.css', mimetype='text/css')

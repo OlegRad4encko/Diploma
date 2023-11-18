@@ -141,10 +141,11 @@
         "is_quick_answer": "True"
     },
     "CURRENT_SETTINGS": {
-        "ASSISTANT_TTS": "en",
-        "ASSISTANT_STT": "en",
+        "ASSISTANT_TTS": "uk",
+        "ASSISTANT_STT": "uk",
         "ASSISTANT_TRA": "en",
-        "SPEAK_THE_ANSWER": false,
-        "IS_QUICK_ANSWER": true
+        "SPEAK_THE_ANSWER": "False",
+        "IS_QUICK_ANSWER": "True",
+        "LAST_REQUEST": 1700341523.308804
     }
 }

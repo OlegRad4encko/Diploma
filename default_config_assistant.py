@@ -7,7 +7,10 @@ DEFAULT__SETTINGS = {
                 "\u0449\u043e \u0442\u0438 \u0432\u043c\u0456\u0454\u0448",
                 "\u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0430"
             ],
-            "can_delete": "False"
+            "can_delete": "False",
+            "isCustom": "False",
+            "commandType": "None",
+            "customCommand": ""
         },
         "time": {
             "word_list": [
@@ -15,7 +18,10 @@ DEFAULT__SETTINGS = {
                 "\u0442\u043e\u0447\u043d\u0438\u0439 \u0447\u0430\u0441",
                 "\u043a\u043e\u0442\u0440\u0430 \u0433\u043e\u0434\u0438\u043d\u0430"
             ],
-            "can_delete": "False"
+            "can_delete": "False",
+            "isCustom": "False",
+            "commandType": "None",
+            "customCommand": ""
         },
         "open browser": {
             "word_list": [
@@ -27,7 +33,10 @@ DEFAULT__SETTINGS = {
                 "\u0433\u0443\u0433\u043b",
                 "\u0433\u0443\u0433\u043b \u0445\u0440\u043e\u043c"
             ],
-            "can_delete": "False"
+            "can_delete": "False",
+            "isCustom": "False",
+            "commandType": "None",
+            "customCommand": ""
         },
         "joke": {
             "word_list": [
@@ -36,7 +45,10 @@ DEFAULT__SETTINGS = {
                 "\u0440\u0430\u0441\u0441\u043a\u0430\u0436\u0438 \u0436\u0430\u0440\u0442",
                 "\u043f\u043e\u0436\u0430\u0440\u0442\u0443\u0439"
             ],
-            "can_delete": "False"
+            "can_delete": "False",
+            "isCustom": "False",
+            "commandType": "None",
+            "customCommand": ""
         },
         "write": {
             "word_list": [
@@ -46,7 +58,10 @@ DEFAULT__SETTINGS = {
                 "\u043f\u0438\u0448\u0438 \u0437\u0430 \u043c\u0435\u043d\u0435",
                 "\u0433\u043e\u043b\u043e\u0441 \u0432 \u0442\u0435\u043a\u0441\u0442"
             ],
-            "can_delete": "False"
+            "can_delete": "False",
+            "isCustom": "False",
+            "commandType": "None",
+            "customCommand": ""
         },
         "find": {
             "word_list": [
@@ -55,26 +70,35 @@ DEFAULT__SETTINGS = {
                 "\u0437\u043d\u0430\u0439\u0434\u0438 \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u044e",
                 "\u044f\u043a \u043d\u0430\u0437\u0438\u0432\u0430\u0454\u0442\u044c\u0441\u044f"
             ],
-            "can_delete": "False"
+            "can_delete": "False",
+            "isCustom": "False",
+            "commandType": "None",
+            "customCommand": ""
         },
         "say": {
             "word_list": [
                 "\u0441\u043a\u0430\u0436\u0438",
                 "\u0433\u043e\u043b\u043e\u0441"
             ],
-            "can_delete": "False"
+            "can_delete": "False",
+            "isCustom": "False",
+            "commandType": "None",
+            "customCommand": ""
         },
         "gpt": {
             "word_list": [
                 "\u043d\u0435\u0439\u0440\u043e\u043c\u0435\u0440\u0435\u0436\u0430",
                 "\u0447\u0430\u0442 \u043d\u0435\u0439\u0440\u043e\u043c\u0435\u0440\u0435\u0436\u0456"
             ],
-            "can_delete": "False"
+            "can_delete": "False",
+            "isCustom": "False",
+            "commandType": "None",
+            "customCommand": ""
         }
     },
     "ASSISTANT_ALIAS": [
         "\u043e\u043b\u0435\u0433",
-        "\u043e\u043b\u0435\u0436\u0435"
+        "\u041e\u043b\u0435\u0436\u0435"
     ],
     "ASSISTANT_TTS": {
         "uk": {
@@ -96,6 +120,10 @@ DEFAULT__SETTINGS = {
         "uk": {
             "model": "vosk-model-uk-v3",
             "label": "ua"
+        },
+        "en": {
+            "model": "vosk-model-small-en-us-0.15",
+            "label": "en"
         }
     },
     "ASSISTANT_TRA": {
@@ -113,11 +141,12 @@ DEFAULT__SETTINGS = {
         "is_quick_answer": "True"
     },
     "CURRENT_SETTINGS": {
-        "ASSISTANT_TTS": "de",
+        "ASSISTANT_TTS": "uk",
         "ASSISTANT_STT": "uk",
-        "ASSISTANT_TRA": "fr",
-        "SPEAK_THE_ANSWER": "true",
-        "IS_QUICK_ANSWER": "true"
+        "ASSISTANT_TRA": "en",
+        "SPEAK_THE_ANSWER": "False",
+        "IS_QUICK_ANSWER": "True",
+        "LAST_REQUEST": 1700334503.6034412
     }
 }
 
@@ -144,3 +173,5 @@ ISO_639_1 = [
     'uz','ve','vi','vo','wa','cy','wo','xh','yi',
     'yo','za','zu'
     ]
+
+last_request_time = None
