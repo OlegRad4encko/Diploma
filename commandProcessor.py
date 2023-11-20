@@ -42,7 +42,7 @@ def convert_numbers_in_text(text):
 # The function creates a tkinder window to display the string
 def paint_answer(answer_text):
     root = tk.Tk()
-    root.title("Ответ")
+    root.title("Відповідь")
 
     frame = Frame(root)
     frame.pack(fill='both', expand=True)
@@ -74,17 +74,13 @@ def execute_custom_command_exe(ff_path, type):
     try:
         if type == 'file':
             result = subprocess.run([ff_path], check=True, text=True, capture_output=True)
-            print("Output:", result.stdout)
         if type == 'path':
             system_type = platform.system()
-            print(system_type)
             if system_type == "Windows":
                 result = subprocess.run(['explorer', ff_path], check=True)
-                print("Output:", result.stdout)
                 show_notification("Голосовий помічник","Теку выдкрито")
             elif system_type == "Linux":
                 result = subprocess.run(['xdg-open', ff_path], check=True)
-                print("Output:", result.stdout)
                 show_notification("Голосовий помічник","Теку выдкрито")
 
     except subprocess.CalledProcessError as e:
@@ -216,7 +212,7 @@ def execute_cmd(cmd: str, key_world: str, voice: str, assistant_alias, assistant
     elif cmd == 'say':
         if speak_the_answer == "False":
             show_notification("Голосовий помічник","Увімкніть озвучування відповідей голосового помічника")
-            print("Notification3: Turn on 'say'")
+
         else:
             speech_the_text(make_req_from_string(voice, key_world), tts_model)
 
@@ -292,7 +288,7 @@ def stt_respond(voice: str, assistant_alias, assistant_cmd_list, assistant_tts, 
     if voice.startswith(assistant_alias):
         cmd = recognize_cmd(filter_cmd(voice, assistant_alias), assistant_cmd_list)
         if cmd['cmd'] not in assistant_cmd_list.keys():
-            print("Я вас не зрозумів")
+            show_notification("Голосовий помічник", "Я Вас не зрозумів")
         else:
             execute_cmd(cmd['cmd'], cmd['key_world'], voice, assistant_alias, assistant_cmd_list, assistant_tts, assistant_stt, assistant_tra, current_settings, tts_model)
 
