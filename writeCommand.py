@@ -90,7 +90,6 @@ def listen_write(stt_model):
                 if rec.AcceptWaveform(data):
                     result = write(json.loads(rec.Result())["text"], result)
                     paste_to_active_window(result)
-                    print(result)
 
     except(KeyboardInterrupt):
         sys.exit(0)

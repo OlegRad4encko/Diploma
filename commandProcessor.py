@@ -16,6 +16,7 @@ import asyncio
 import subprocess
 import platform
 import webbrowser
+import inflect
 
 
 settings_manager.load_settings()
