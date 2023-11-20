@@ -1,16 +1,17 @@
-import json
-import asyncio
 from SettingsManager import SettingsManager, settings_manager
 from flask import Flask, send_file, render_template, url_for, request
+from multiprocessing import Process
+from default_config_assistant import last_request_time
+import json
+import asyncio
 import webbrowser
-from multiprocessing import Process, Value, Lock
 import re
 import os
 import time
 import sys
 import signal
 import logging
-from default_config_assistant import last_request_time
+
 
 
 # configs of VA assistant ==============================================================================================
@@ -42,17 +43,21 @@ log.setLevel(logging.ERROR)
 # run server
 def run_server():
     open_browser()
-    app.run(host=web_config['host'], port=web_config['port'], threaded=True, processes=1, use_reloader=False)
+    app.run(host=web_config['host'], port=web_config['port'], threaded=True, processes=1, use_reloader=False, debug=False)
 
+
+# changing the last_request_time
 def change_last_request_time():
     current_settings['LAST_REQUEST'] = time.time()
     settings_manager.set_setting('CURRENT_SETTINGS', current_settings)
     settings_manager.save_settings()
 
+# getting the last_request_time
 def get_last_request_time():
     settings_manager.load_settings()
     return settings_manager.get_setting('CURRENT_SETTINGS', {})['LAST_REQUEST']
 
+# stopping web server
 def stop_server(**kwargs):
     server_inactive_live = web_config['server_inactive_live']
     server_last_answer = web_config['server_last_answer']
@@ -64,13 +69,15 @@ def stop_server(**kwargs):
 
     change_last_request_time()
     while True:
-        elapsed_time = time.time() - get_last_request_time()
-        if elapsed_time > server_inactive_live:
-            os.kill(server_process, signal.SIGTERM)
-            print("Server Stopped")
-            break
-        time.sleep(server_last_answer)
-
+        try:
+            elapsed_time = time.time() - get_last_request_time()
+            if elapsed_time > server_inactive_live:
+                os.kill(server_process, signal.SIGTERM)
+                print("Server Stopped")
+                break
+            time.sleep(server_last_answer)
+        except(KeyboardInterrupt):
+            sys.exit(0)
 
 
 # check string on latin symbols only
@@ -99,8 +106,9 @@ def if_executable(input_string):
         input_string.lower().endswith(('.exe', '.bat', '.cmd'))
     )
 
+
 # open browser with home page
-def open_browser(destination: str = ''):
+def open_browser(destination:str = ''):
     webbrowser.open('http://'+str(web_config['host'])+':'+str(web_config['port'])+'/'+destination)
 
 
@@ -126,7 +134,6 @@ def serve_html():
 
     return render_template('index.html', assistant_stt=assistant_stt, assistant_tts=assistant_tts,
         assistant_tra=assistant_tra, current_settings=current_settings)
-
 
 
 # other settings page
@@ -156,13 +163,11 @@ def other_settings():
     return render_template('otherSettings.html', current_settings=current_settings)
 
 
-
 # add languages page
 @app.route('/add_languages')
 def add_languages():
     change_last_request_time()
     return render_template('addLanguages.html')
-
 
 
 # add speech to text language page
@@ -214,7 +219,6 @@ def add_stt_language():
     return render_template('addSTTLanguage.html')
 
 
-
 # add text to speach language page
 @app.route('/add_tts_language', methods=['GET', 'POST'])
 def add_tss_language():
@@ -264,7 +268,6 @@ def add_tss_language():
     return render_template('addTTSLanguage.html')
 
 
-
 # add translate language page
 @app.route('/add_translate_language', methods=['GET', 'POST'])
 def add_translate_language():
@@ -303,7 +306,6 @@ def add_translate_language():
             message_type=message_type, message_text=message_text)
 
     return render_template('addTranslateLanguage.html')
-
 
 
 # commands list page
@@ -437,9 +439,7 @@ def commands_list():
             return render_template('commandsList.html', assistant_cmd_list=assistant_cmd_list,
                 message_type=message_type, message_text=message_text)
 
-
     return render_template('commandsList.html', assistant_cmd_list=assistant_cmd_list)
-
 
 
 # edit command page
@@ -448,7 +448,6 @@ def command_edit():
     change_last_request_time()
 
     return render_template('commandsList.html', assistant_cmd_list=assistant_cmd_list)
-
 
 
 # add command page
@@ -528,7 +527,6 @@ def add_command():
     return render_template('addCommand.html')
 
 
-
 # VA names page
 @app.route('/voice_assistant_names', methods=['GET', 'POST'])
 def voice_assistant_names():
@@ -578,10 +576,8 @@ def voice_assistant_names():
     return render_template('VANames.html', assistant_alias=assistant_alias)
 
 
-
 # load styles to page
 @app.route('/src/styles.css')
 def serve_css():
     change_last_request_time()
-
     return send_file('src/styles.css', mimetype='text/css')

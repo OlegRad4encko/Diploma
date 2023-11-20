@@ -1,3 +1,4 @@
+# default VA settings
 DEFAULT__SETTINGS = {
     "ASSISTANT_CMD_LIST": {
         "help": {
@@ -150,6 +151,8 @@ DEFAULT__SETTINGS = {
     }
 }
 
+
+# list of language names according to the ISO_639_1 standard
 ISO_639_1 = [
     'ab','aa','af','ak','sq','am','ar','an','hy',
     'as','av','ae','ay','az','bm','ba','eu','be',
@@ -174,4 +177,5 @@ ISO_639_1 = [
     'yo','za','zu'
     ]
 
+# last request to server - need to stoping the web server
 last_request_time = None
