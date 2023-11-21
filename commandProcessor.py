@@ -240,6 +240,17 @@ def execute_cmd(cmd: str, key_world: str, voice: str, assistant_alias, assistant
         else:
             paint_gpt_answer(result)
 
+
+    # translate command
+    elif cmd == 'translate':
+        va_request = make_req_from_string(voice, key_world)
+        translate = TranslatorModel(cur_speach_lang, cur_tra_to_lang)
+        translated_text = translate.translate_text(va_request)
+        result = va_request +f'\u000a\u000a'+translated_text
+        paint_gpt_answer(result)
+
+
+    # custom command     
     else:
         if assistant_cmd_list[cmd]['commandType'] == 'explorer':
             execute_custom_command_exe(assistant_cmd_list[cmd]['customCommand'], 'path')

@@ -90,6 +90,11 @@
 
 .content .horizontal-flex a {
     width: 125px;
+    border-radius: 5px;
+}
+
+.content .horizontal-flex a:hover {
+    background-color: #f5f6fa;
 }
 
 .content .horizontal-flex > label {
@@ -118,9 +123,17 @@
     text-transform: none;
 }
 
+.content .horizontal-flex > button:hover {
+    background-color: #f5f6fa;
+}
+
 .content .horizontal-flex select {
     text-align: center;
     cursor: pointer;
+}
+
+.content .horizontal-flex select:hover {
+    background-color: #f5f6fa;
 }
 
 .horizontal-flex:last-child {
@@ -164,7 +177,8 @@
     padding: 0px 10px;
 }
 
-.under > .link, .under > button{
+.under > .link, .under > button {
+    transition: 1;
     display: block;
     font-size: 16px;
     height: 40px;
@@ -178,6 +192,14 @@
     border-radius: 5px;
     text-decoration: none;
     cursor: pointer;
+}
+
+.under .link:hover {
+    background-color: #f5f6fa;
+}
+
+.under  button:hover {
+    background-color: #f5f6fa;
 }
 
 .under > button {
@@ -232,6 +254,14 @@
     border-radius: 5px;
     border: none;
     height: 40px;
+}
+
+.in-horizontal-flex > input:hover {
+    background-color: #f5f6fa;
+}
+
+.in-horizontal-flex > button:hover {
+    background-color: #f5f6fa;
 }
 
 i {
@@ -320,7 +350,12 @@ table tr td, th {
 }
 
 .command_delete button i {
+    transition: .5;
     margin-left: 0px;
+}
+
+.command_delete button i:hover {
+    color: #f5f6fa;
 }
 
 .command_name button {
@@ -336,6 +371,10 @@ table tr td, th {
 
 .command_name button i {
     margin-left: 0px;
+}
+
+.command_name button:hover i {
+    color: #f5f6fa;
 }
 
 .command_name button span {
@@ -370,24 +409,71 @@ table tr td, th {
     height: auto;
     background-color: #3E4E50;
     position: absolute;
-    top: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 20px;
     padding: 16px 20px;
     box-sizing: border-box;
-    border: 1px solid red;
     color:white;
     text-align: center;
+    font-size: 16px;
 }
 
 .error {
     border: 1px solid red;
+    top: -10%;
+    animation: error_anim 3s linear;
 }
 
 .info {
     border: 1px solid greenyellow;
+    top: -10%;
+    animation: info_nim 3s linear;
 }
+
+
+@keyframes error_anim {
+    0% {
+        top: 10%;
+        left: 50%;
+    }
+    1% {
+        top: 10%;
+        left: 50%;
+    }
+    2% {
+        top: 10%;
+        left: 52%;
+    }
+    4% {
+        top: 10%;
+        left: 48%;
+    }
+    5% {
+        top: 10%;
+        left: 50%;
+    }
+    90% {
+        top: 10%;
+    }
+    100% {
+        top: -10%;
+    }  
+}
+
+
+@keyframes info_nim {
+    0% {
+        top: 10%;
+    }
+    90% {
+        top: 10%;
+    }
+    100% {
+        top: -10%;
+    } 
+}
+
 
 .va-names {
     display: flex;
