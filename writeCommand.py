@@ -22,14 +22,13 @@ def get_active_window_title():
 
 
 # pasting text to active window
-def paste_to_active_window(text):
+def paste_to_active_window(text:str):
     active_window_title = get_active_window_title()
-    print(text)
     keyboard.write(text)
 
 
 # stop callback to tkinder window
-def stop_callback(root):
+def stop_callback(root: tk):
     root.result = "stop"
     root.destroy()
 
@@ -64,6 +63,7 @@ def write(voice: str, result: str):
 def query_callback(indata, frames, time, status):
     if status:
         print(status, file=sys.stderr)
+
     q.put(bytes(indata))
 
 

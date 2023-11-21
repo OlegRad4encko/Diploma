@@ -14,7 +14,7 @@ class VoiceModel:
 
 
     # init
-    def __init__(self, language, model_id, sample_rate, speaker, put_accent=True, put_yo=True):
+    def __init__(self, language:str, model_id:str, sample_rate:str, speaker:str, put_accent:bool =True, put_yo:bool =True):
         self.language = language
         self.model_id = model_id
         self.sample_rate = sample_rate
@@ -37,7 +37,7 @@ class VoiceModel:
 
 
     # create audio method
-    def create_audio(self, text):
+    def create_audio(self, text:str):
         try:
             self.audio = self.model.apply_tts(text=text,
                                           speaker=self.speaker,
@@ -49,7 +49,7 @@ class VoiceModel:
 
 
     # play audio method
-    def play_audio(self, text):
+    def play_audio(self, text:str):
         try:
             VoiceModel.create_audio(self, text)
             sd.play(self.audio, self.sample_rate)

@@ -4,7 +4,7 @@ import json
 
 class SettingsManager:
     # init
-    def __init__(self, filename='settings.json'):
+    def __init__(self, filename:str='settings.json'):
         self.filename = filename
         self.settings = default_config.DEFAULT__SETTINGS
 
@@ -28,17 +28,17 @@ class SettingsManager:
 
 
     # getting settings
-    def get_setting(self, key, default=None):
+    def get_setting(self, key:str, default=None):
         return self.settings.get(key, default)
 
 
     # setting settings
-    def set_setting(self, key, value):
+    def set_setting(self, key:str, value):
         self.settings[key] = value
 
 
     # deleting settings from key
-    def delete_setting_from_key(self, key, key_to_remove):
+    def delete_setting_from_key(self, key:str, key_to_remove:str):
         if key in self.settings and key_to_remove in self.settings[key]:
             del self.settings[key][key_to_remove]
             self.save_settings()
@@ -46,7 +46,7 @@ class SettingsManager:
 
 
     # deleting value by key
-    def delete_value_from_key(self, key, value):
+    def delete_value_from_key(self, key:str, value:str):
         if key in self.settings and value in self.settings[key]:
             self.settings[key].remove(value)
             self.save_settings()

@@ -22,13 +22,13 @@ import inflect
 settings_manager.load_settings()
 
 # Asynchronous function for request in chatGPT
-async def gpt_req(text_to_gpt):
+async def gpt_req(text_to_gpt: str):
     freeGPT = gpt()
     return await freeGPT.create_prompt(text_to_gpt)
 
 
 # The function converts numbers to a string
-def convert_numbers_in_text(text):
+def convert_numbers_in_text(text: str):
     p = inflect.engine()
     words = text.split()
     for i in range(len(words)):
@@ -41,7 +41,7 @@ def convert_numbers_in_text(text):
 
 
 # The function creates a tkinder window to display the string
-def paint_answer(answer_text):
+def paint_answer(answer_text: str):
     root = tk.Tk()
     root.title("Відповідь")
 
@@ -65,13 +65,13 @@ def paint_answer(answer_text):
 
 
 # Function creates a process to display a string via tkinter
-def paint_gpt_answer(text):
+def paint_gpt_answer(text: str):
     window_process = Process(target=paint_answer, args=[text])
     window_process.start()
 
 
 # function of opening a folder or executable file of a custom command
-def execute_custom_command_exe(ff_path, type):
+def execute_custom_command_exe(ff_path: str, type: str):
     try:
         if type == 'file':
             result = subprocess.run([ff_path], check=True, text=True, capture_output=True)
@@ -90,7 +90,7 @@ def execute_custom_command_exe(ff_path, type):
 
 
 # the function translates all spoken text into a user request without a command and an alias assistant
-def make_req_from_string(original_string, key_world):
+def make_req_from_string(original_string: str, key_world: str):
     key_world_count = len(key_world.split())
     words = original_string.split()
     remaining_words = words[key_world_count+1:]
@@ -99,7 +99,7 @@ def make_req_from_string(original_string, key_world):
 
 
 # making the textToSpeach model
-def make_tss_model(lang, tts):
+def make_tss_model(lang: str, tts: str):
     language = tts[lang]['language']
     model_id = tts[lang]['model_id']
     sample_rate = tts[lang]['sample_rate']
@@ -108,13 +108,13 @@ def make_tss_model(lang, tts):
 
 
 # The function translates text into voice
-def speech_the_text(text, tts_model):
+def speech_the_text(text: str, tts_model: VoiceModel):
     tts_model.play_audio(text)
     return 0
 
 
 # execute command function
-def execute_cmd(cmd: str, key_world: str, voice: str, assistant_alias, assistant_cmd_list, assistant_tts, assistant_stt, assistant_tra, current_settings, tts_model):
+def execute_cmd(cmd: str, key_world: str, voice: str, assistant_alias, assistant_cmd_list, assistant_tts, assistant_stt, assistant_tra, current_settings, tts_model: VoiceModel):
     cur_tra_to_lang = current_settings['ASSISTANT_TRA']
     cur_speach_lang = current_settings['ASSISTANT_TTS']
     cur_speaker_lang = current_settings['ASSISTANT_STT']
@@ -250,7 +250,7 @@ def execute_cmd(cmd: str, key_world: str, voice: str, assistant_alias, assistant
         paint_gpt_answer(result)
 
 
-    # custom command     
+    # custom command
     else:
         if assistant_cmd_list[cmd]['commandType'] == 'explorer':
             execute_custom_command_exe(assistant_cmd_list[cmd]['customCommand'], 'path')

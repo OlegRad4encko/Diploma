@@ -14,7 +14,7 @@ class TextNeuralNetwork:
 
 
     # chatGPT request
-    async def create_prompt(self, prompt):
+    async def create_prompt(self, prompt: str):
         try:
             if self.is_quick_answer == 'True':
                 prompt += ' (Дай найкоротшу відповідь на тій мові, яка було до дужок)'
@@ -26,6 +26,27 @@ class TextNeuralNetwork:
 
         except Exception as e:
             return f"Error {e}"
+
+
+    # model setter
+    def set_model(self):
+        pass
+
+
+    # is_quick_answer setter
+    def set_is_quick_answer(self):
+        pass
+
+
+    # model getter
+    def get_model(self):
+        pass
+
+
+    # is_quick_answer getter
+    def get_is_quick_answer(self):
+        pass
+
 
 
 

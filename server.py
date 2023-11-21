@@ -81,23 +81,23 @@ def stop_server(**kwargs):
 
 
 # check string on latin symbols only
-def is_latin_only(input_string):
+def is_latin_only(input_string:str):
     return bool(re.match("^[a-zA-Z]+$", input_string))
 
 
 # check string on the correct link path
-def if_link(input_string):
+def if_link(input_string:str):
     url_pattern = re.compile(r'(https?://|ftp://|file://|http://localhost:|http://\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}(:\d+)?/)(?:www\.)?[a-zA-Z0-9-]+(?:\.[a-zA-Z]{2,})+(?::\d+)?(?:/[^\s]*)?')
     return bool(url_pattern.match(input_string))
 
 
 # check string on the folder path
-def if_folder_path(input_string):
+def if_folder_path(input_string:str):
     return bool(input_string and input_string[1:3] == ":\\" and not input_string.endswith('\\') and '.' not in input_string)
 
 
 # check string on the executable file path
-def if_executable(input_string):
+def if_executable(input_string:str):
     return bool(
         input_string and
         input_string[1:3] == ":\\" and

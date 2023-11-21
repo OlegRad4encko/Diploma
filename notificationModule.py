@@ -1,7 +1,7 @@
 from plyer import notification
 
 # Function calling system notification
-def show_notification(title, message):
+def show_notification(title:str, message:str):
     notification.notify(
         title=title,
         message=message,

@@ -43,7 +43,7 @@ def listen(callback, stt_model, assistant_alias, assistant_cmd_list, assistant_t
 
 class SpeachToText:
     # init
-    def __init__(self, model):
+    def __init__(self, model:str):
         self.model = vosk.Model('models_stt/' + model)
         self.sample_rate = 16000
         self.block_size = 8000

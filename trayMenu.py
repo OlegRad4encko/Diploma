@@ -26,7 +26,7 @@ class TrayMenu:
 
 
     # start\stop action handler
-    def start_stopVA(self, icon, item):
+    def start_stopVA(self):
         self.changeState()
         if self.VAstate == "Start":
             self.command_process = Process(target=run_command_processor)
@@ -65,7 +65,7 @@ class TrayMenu:
 
 
     # quit action handler
-    def on_quit(self, icon, item):
+    def on_quit(self, icon):
         if self.server_process != None:
             if self.server_process.is_alive():
                 self.server_process.terminate()
