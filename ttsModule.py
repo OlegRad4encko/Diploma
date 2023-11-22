@@ -6,8 +6,8 @@ import time
 import silero
 import numpy
 import wave
-
-
+import sys
+import os
 
 class VoiceModel:
     repo_or_dir = 'snakers4/silero-models'
@@ -30,6 +30,9 @@ class VoiceModel:
 
     # create model method
     def create_model(self):
+        sys.stderr = open(os.devnull, "w")
+
+
         self.model, _ = torch.hub.load(repo_or_dir=VoiceModel.repo_or_dir,
                                        model=VoiceModel.model,
                                        language=self.language,

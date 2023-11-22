@@ -5,6 +5,12 @@ import sounddevice as sd
 import queue
 import json
 
+if getattr(sys, 'frozen', False):
+    if sys.stderr is None:
+        sys.stderr = sys.__stderr__
+
+if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+    sys.stderr = sys.__stderr__
 
 # the queue
 q = queue.Queue()

@@ -2,6 +2,8 @@ from trayMenu import startTray
 from multiprocessing import Process
 from multiprocessing import Process, freeze_support
 import time
+import sys
+import multiprocessing
 
 freeze_support()
 
@@ -15,6 +17,7 @@ if __name__ == '__main__':
 
 # pyinstaller --onefile --add-data ".\venv\Lib\site-packages\vosk;./vosk" --add-data "web;web" --hidden-import tkinter --hidden-import plyer.platforms.win.notification  main.py
 # pyinstaller --onefile --add-data ".\venv\Lib\site-packages\vosk;./vosk" --add-data "web;web" --hidden-import tkinter --hidden-import plyer.platforms.win.notification --noconsole  main.py
+
 
 
 
