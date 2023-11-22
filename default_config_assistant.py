@@ -15,7 +15,7 @@ DEFAULT__SETTINGS = {
         },
         "time": {
             "word_list": [
-                "\u0441\u043a\u0456\u043b\u044c\u043a\u0438 \u0447\u0430\u0441\u0443",
+                "\u0447\u0430\u0441\u0443",
                 "\u0442\u043e\u0447\u043d\u0438\u0439 \u0447\u0430\u0441",
                 "\u043a\u043e\u0442\u0440\u0430 \u0433\u043e\u0434\u0438\u043d\u0430"
             ],
@@ -41,9 +41,8 @@ DEFAULT__SETTINGS = {
         },
         "joke": {
             "word_list": [
-                "\u0441\u043a\u0430\u0436\u0438 \u0436\u0430\u0440\u0442",
+                "\u0436\u0430\u0440\u0442",
                 "\u0448\u0443\u0442\u043a\u0430",
-                "\u0440\u0430\u0441\u0441\u043a\u0430\u0436\u0438 \u0436\u0430\u0440\u0442",
                 "\u043f\u043e\u0436\u0430\u0440\u0442\u0443\u0439"
             ],
             "can_delete": "False",
@@ -95,6 +94,43 @@ DEFAULT__SETTINGS = {
             "isCustom": "False",
             "commandType": "None",
             "customCommand": ""
+        },
+        "translate": {
+            "word_list": [
+                "\u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0438"
+            ],
+            "can_delete": "False",
+            "isCustom": "False",
+            "commandType": "None",
+            "customCommand": ""
+        },
+        "telega": {
+            "word_list": [
+                "\u0442\u0435\u043b\u0435\u0433\u0440\u0430\u043c"
+            ],
+            "can_delete": "True",
+            "isCustom": "True",
+            "commandType": "execute",
+            "customCommand": "G:\\Programs\\Steam\\steam.exe"
+        },
+        "home": {
+            "word_list": [
+                "\u0434\u0456\u043c",
+                "\u0432\u0434\u043e\u043c\u0430"
+            ],
+            "can_delete": "True",
+            "isCustom": "True",
+            "commandType": "openWebPage",
+            "customCommand": "https://fontawesome.com/icons/xmark?f=classic&s=solid"
+        },
+        "diploma": {
+            "word_list": [
+                "\u0434\u0438\u043f\u043b\u043e\u043c"
+            ],
+            "can_delete": "True",
+            "isCustom": "True",
+            "commandType": "explorer",
+            "customCommand": "C:\\Users\\Oleh Serhiyovych\\PycharmProjects\\Diploma\\Diploma"
         }
     },
     "ASSISTANT_ALIAS": [
@@ -145,9 +181,9 @@ DEFAULT__SETTINGS = {
         "ASSISTANT_TTS": "uk",
         "ASSISTANT_STT": "uk",
         "ASSISTANT_TRA": "en",
-        "SPEAK_THE_ANSWER": "False",
-        "IS_QUICK_ANSWER": "True",
-        "LAST_REQUEST": 1700334503.6034412
+        "SPEAK_THE_ANSWER": "True",
+        "IS_QUICK_ANSWER": "False",
+        "LAST_REQUEST": 1700624143.1594834
     }
 }
 
