@@ -6,8 +6,6 @@ from commandProcessor import run_command_processor
 from notificationModule import show_notification
 import time
 
-
-
 class TrayMenu:
     # init object
     def __init__(self):
@@ -92,3 +90,6 @@ class TrayMenu:
 def startTray():
     tray_menu = TrayMenu()
     tray_menu.run()
+
+
+

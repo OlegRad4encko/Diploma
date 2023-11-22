@@ -577,7 +577,7 @@ def voice_assistant_names():
 
 
 # load styles to page
-@app.route('/src/styles.css')
+@app.route('/styles.css')
 def serve_css():
     change_last_request_time()
-    return send_file('src/styles.css', mimetype='text/css')
+    return send_file('web/styles.css', mimetype='text/css')

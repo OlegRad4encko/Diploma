@@ -5,6 +5,7 @@ import sounddevice as sd
 import time
 import silero
 import numpy
+import wave
 
 
 
