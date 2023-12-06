@@ -20,7 +20,6 @@
                     <h1>Voice Assistant</h1>
                     <span class="under-logotext">Редагування команди {{ command_edit }}</span>
                 </div>
-
                 <div class="horizontal-flex margin-top">
                     <label>Назва команди (англійскою)</label>
                     <div class="in-horizontal-flex">
@@ -30,7 +29,6 @@
                         </i>
                     </div>
                 </div>
-
                 <div class="horizontal-flex margin-top with-textarea">
                     <label>Ключові слова</label>
                     <div class="in-horizontal-flex">
@@ -40,9 +38,7 @@
                         </i>
                     </div>
                 </div>
-
                 {% if assistant_cmd_list[command_edit].isCustom == "True" %}
-
                 <div class="horizontal-flex">
                     <label>Тип команди:</label>
                     <select name="commandType" id="commandType">
@@ -55,7 +51,6 @@
                         <span class="tooltiptext">Оберіть тип кастомної команди:<br> Відкрити теку в системі - відкриє теку;<br> Запустити програму - запустить команду;<br> Відкрити веб сторінку - Відкриє веб сторінку</span>
                     </i>
                 </div>
-
                 <div class="horizontal-flex margin-top with-textarea">
                     <label>Команда на виконання</label>
                     <div class="in-horizontal-flex">
@@ -65,9 +60,7 @@
                         </i>
                     </div>
                 </div>
-
                 {% endif %}
-
                 <div class="under">
                     <button type="submit" name="edit" value="pass">Редагувати</button>
                     <a href="{{ url_for('commands_list') }}"><div class="link">Назад</div></a>

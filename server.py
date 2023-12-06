@@ -3,7 +3,6 @@ from flask import Flask, send_file, render_template, url_for, request
 from multiprocessing import Process
 from default_config_assistant import last_request_time
 import json
-import asyncio
 import webbrowser
 import re
 import os

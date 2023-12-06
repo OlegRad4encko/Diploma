@@ -15,13 +15,11 @@ if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
 # the queue
 q = queue.Queue()
 
-
 # This callback function when recording audio
 def query_callback(indata, frames, time, status):
     if status:
         print(status, file=sys.stderr)
     q.put(bytes(indata))
-
 
 # function data flow handler from the "vosk" model
 def listen(callback, stt_model, assistant_alias, assistant_cmd_list, assistant_tts, assistant_stt, assistant_tra, current_settings, tts_model):
@@ -44,8 +42,6 @@ def listen(callback, stt_model, assistant_alias, assistant_cmd_list, assistant_t
                     callback(json.loads(rec.Result())["text"], assistant_alias, assistant_cmd_list, assistant_tts, assistant_stt, assistant_tra, current_settings, tts_model)
     except(KeyboardInterrupt):
         sys.exit(0)
-
-
 
 class SpeachToText:
     # init

@@ -19,7 +19,6 @@
                     <h1>Voice Assistant</h1>
                     <span class="under-logotext">Додавання команди</span>
                 </div>
-
                 <div class="horizontal-flex margin-top">
                     <label>Назва команди (англійскою)</label>
                     <div class="in-horizontal-flex">
@@ -29,7 +28,6 @@
                         </i>
                     </div>
                 </div>
-
                 <div class="horizontal-flex margin-top with-textarea">
                     <label>Ключові слова</label>
                     <div class="in-horizontal-flex">
@@ -39,7 +37,6 @@
                         </i>
                     </div>
                 </div>
-
                 <div class="horizontal-flex">
                     <label>Тип команди:</label>
                     <select name="commandType" id="commandType">
@@ -58,9 +55,7 @@
                     <i class="fa-solid fa-circle-question tooltip">
                         <span class="tooltiptext">Оберіть тип кастомної команди:<br><br> Відкрити теку в системі - відкриє теку;<br> Запустити програму - запустить команду;<br> Відкрити веб сторінку - Відкриє веб сторінку</span>
                     </i>
-
                 </div>
-
                 <div class="horizontal-flex margin-top with-textarea">
                     <label>Команда на виконання</label>
                     <div class="in-horizontal-flex">
@@ -70,12 +65,10 @@
                         </i>
                     </div>
                 </div>
-
                 <div class="under">
                     <button type="submit" name="edit" value="pass">Додати команду</button>
                     <a href="{{ url_for('commands_list') }}"><div class="link">Назад</div></a>
                 </div>
-
             </form>
         </div>
     <script src="https://kit.fontawesome.com/24baab97da.js" crossorigin="anonymous"></script>

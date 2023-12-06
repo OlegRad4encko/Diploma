@@ -13,7 +13,6 @@
                     <h1>Voice Assistant</h1>
                     <span class="under-logotext">Список команд</span>
                 </div>
-
                 <table>
                     <tr>
                         <th class="command_name">Назва команди та редагування:</th>
@@ -42,12 +41,10 @@
                       </tr>
                     {% endfor %}
                 </table>
-
                 <div class="under">
                     <a href="{{ url_for('add_command') }}"><div class="link">Додати команду</div></a>
                     <a href="{{ url_for('serve_html') }}"><div class="link">Назад</div></a>
                 </div>
-
             </form>
         </div>
     <script src="https://kit.fontawesome.com/24baab97da.js" crossorigin="anonymous"></script>

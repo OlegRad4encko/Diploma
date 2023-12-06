@@ -13,7 +13,6 @@ class VoiceModel:
     repo_or_dir = 'snakers4/silero-models'
     model = 'silero_tts'
 
-
     # init
     def __init__(self, language:str, model_id:str, sample_rate:str, speaker:str, put_accent:bool =True, put_yo:bool =True):
         self.language = language
@@ -31,8 +30,6 @@ class VoiceModel:
     # create model method
     def create_model(self):
         sys.stderr = open(os.devnull, "w")
-
-
         self.model, _ = torch.hub.load(repo_or_dir=VoiceModel.repo_or_dir,
                                        model=VoiceModel.model,
                                        language=self.language,

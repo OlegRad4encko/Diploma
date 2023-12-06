@@ -258,6 +258,9 @@ def execute_cmd(cmd: str, key_world: str, voice: str, assistant_alias, assistant
             execute_custom_command_exe(assistant_cmd_list[cmd]['customCommand'], 'file')
         elif assistant_cmd_list[cmd]['commandType'] == 'openWebPage':
             webbrowser.open(f'{assistant_cmd_list[cmd]["customCommand"]}')
+        else:
+            show_notification("Голосовий помічник", "Я Вас не зрозумів")
+
 
 
 ## recognizing function v1
