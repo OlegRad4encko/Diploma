@@ -103,34 +103,6 @@ DEFAULT__SETTINGS = {
             "isCustom": "False",
             "commandType": "None",
             "customCommand": ""
-        },
-        "telega": {
-            "word_list": [
-                "\u0442\u0435\u043b\u0435\u0433\u0440\u0430\u043c"
-            ],
-            "can_delete": "True",
-            "isCustom": "True",
-            "commandType": "execute",
-            "customCommand": "G:\\Programs\\Steam\\steam.exe"
-        },
-        "home": {
-            "word_list": [
-                "\u0434\u0456\u043c",
-                "\u0432\u0434\u043e\u043c\u0430"
-            ],
-            "can_delete": "True",
-            "isCustom": "True",
-            "commandType": "openWebPage",
-            "customCommand": "https://fontawesome.com/icons/xmark?f=classic&s=solid"
-        },
-        "diploma": {
-            "word_list": [
-                "\u0434\u0438\u043f\u043b\u043e\u043c"
-            ],
-            "can_delete": "True",
-            "isCustom": "True",
-            "commandType": "explorer",
-            "customCommand": "C:\\Users\\Oleh Serhiyovych\\PycharmProjects\\Diploma\\Diploma"
         }
     },
     "ASSISTANT_ALIAS": [

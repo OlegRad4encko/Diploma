@@ -435,6 +435,7 @@ def commands_list():
 
             message_type = 'info'
             message_text = "Команду видалено"
+            settings_manager.save_settings()
             return render_template('commandsList.html', assistant_cmd_list=assistant_cmd_list,
                 message_type=message_type, message_text=message_text)
 
@@ -536,6 +537,7 @@ def voice_assistant_names():
 
         # deleting name
         if request.form.get('delete_name') != None:
+            print("delete")
             if request.form.get('delete_name') not in assistant_alias:
                 message_type = 'error'
                 message_text = 'Помилка при імені видаленні. <br> Спробуйте ще раз!'
@@ -546,6 +548,7 @@ def voice_assistant_names():
             settings_manager.delete_value_from_key('ASSISTANT_ALIAS', request.form.get('delete_name'))
             message_type = 'info'
             message_text = "Ім'я голосого асистента видалено"
+            settings_manager.save_settings()
             return render_template('VANames.html', message_type=message_type,
                 message_text=message_text, assistant_alias=assistant_alias, new_name=request.form.get('new_name'))
 
