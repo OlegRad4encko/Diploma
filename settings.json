@@ -102,33 +102,6 @@
             "isCustom": "False",
             "commandType": "None",
             "customCommand": ""
-        },
-        "courses": {
-            "word_list": [
-                "\u043a\u0443\u0440\u0441\u0438"
-            ],
-            "can_delete": "True",
-            "isCustom": "True",
-            "commandType": "openWebPage",
-            "customCommand": "https://www.guru99.com/"
-        },
-        "diploma": {
-            "word_list": [
-                "\u0434\u0438\u043f\u043b\u043e\u043c"
-            ],
-            "can_delete": "True",
-            "isCustom": "True",
-            "commandType": "explorer",
-            "customCommand": "C:\\Users\\Oleh Serhiyovych\\PycharmProjects\\Diploma\\Diploma"
-        },
-        "exe": {
-            "word_list": [
-                "\u0442\u0435\u043b\u0435\u0433\u0440\u0430\u043c"
-            ],
-            "can_delete": "True",
-            "isCustom": "True",
-            "commandType": "execute",
-            "customCommand": "P:\\Programs\\VirtualBox\\VirtualBox.exe"
         }
     },
     "ASSISTANT_ALIAS": [
@@ -180,6 +153,6 @@
         "ASSISTANT_TRA": "en",
         "SPEAK_THE_ANSWER": "True",
         "IS_QUICK_ANSWER": "False",
-        "LAST_REQUEST": 1701918572.9996834
+        "LAST_REQUEST": 1702371655.8331323
     }
 }
